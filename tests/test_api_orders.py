@@ -1,6 +1,7 @@
 import allure
 import pytest
 from api import Orders
+from data import OrderData
 
 
 class TestApiOrders():
@@ -8,9 +9,9 @@ class TestApiOrders():
     @allure.title("Проверка создания заказа")
     @allure.description("Проверка создания заказа при заполнении поля цвет:" \
     " один цвет, два цвета, без цвета")
-    @pytest.mark.parametrize('color', [['BLACK'], ['GREY'], ['BLACK', 'GREY'], []])
-    def test_orders_create_success(self, cancel_order, color):
-        data = cancel_order
+    @pytest.mark.parametrize('color', [["BLACK"], ["GREY"], ["BLACK", "GREY"], []])
+    def test_orders_create_success(self, color):
+        data = OrderData.PAYLOAD
         data["color"] = color
         r = Orders.create(data)
         assert r.status_code == 201 and "track" in r.json()
