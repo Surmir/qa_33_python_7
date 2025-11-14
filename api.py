@@ -3,7 +3,7 @@ import requests
 import allure
 
 
-class Courier():
+class CourierApi():
 
     @staticmethod
     @allure.step("Запрос на авторизацию курьера в системе")
@@ -22,7 +22,7 @@ class Courier():
         api_with_id = Api.COURUER_DELETE.replace(':id', id_str)
         return requests.delete(api_with_id)
 
-class Orders():
+class OrdersApi():
 
     @staticmethod
     @allure.step("Запрос на получение списка заказов")
