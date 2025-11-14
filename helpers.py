@@ -26,7 +26,16 @@ class CourierData():
         "password": PAYLOAD_REGISTR["password"]
     }
 
-    PAYLOAD_LOGIN_TEST = {
-        "login": PAYLOAD_REGISTR["login"],
-        "password": PAYLOAD_REGISTR["password"]
-    }
+    TEST_WRONG_DATA = [
+        {"login": "error12",
+         "password": PAYLOAD_REGISTR["password"]},
+        {"login": PAYLOAD_REGISTR["login"],
+         "password": "error12"}
+                        ]
+    
+    TEST_EMPTY_FIELD = [
+        {"login": "",
+         "password": PAYLOAD_REGISTR["password"]},
+        {"login": PAYLOAD_REGISTR["login"],
+         "password": ""}
+                        ]
