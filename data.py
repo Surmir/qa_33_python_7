@@ -1,25 +1,5 @@
 from urls import Url
-import helpers
 
-
-class CourierData():
-
-    PAYLOAD_REGISTR = {
-        "login": helpers.generate_random_string(7),
-        "password": helpers.generate_random_string(7),
-        "firstName": helpers.generate_random_string(7)
-    }
-
-    PAYLOAD_REGISTR_SAME = {
-        "login": PAYLOAD_REGISTR["login"],
-        "password": "345678",
-        "firstName": "madara"
-    }
-
-    PAYLOAD_LOGIN = {
-        "login": PAYLOAD_REGISTR["login"],
-        "password": PAYLOAD_REGISTR["password"]
-    }
 
 class Api():
 
@@ -43,3 +23,33 @@ class OrderData():
         "comment": "Saske, come back to Uchiha and rest",
         "color": ["GRAY"]
     }
+
+class CourierCreateResponse():
+
+    CODE_SUCCESS = 201
+    BODY_SUCCESS = {"ok": True}
+
+    CODE_ERROR_SAME_LOGIN = 409
+    BODY_ERROR_SAME_LOGIN = "Этот логин уже используется. Попробуйте другой."
+
+    CODE_ERROR_EMPTY_FIELD = 400
+    BODY_ERROR_EMPTY_FIELD = "Недостаточно данных для создания учетной записи"
+
+class CourierLoginResponse():
+
+    CODE_SUCCESS = 200
+    BODY_SUCCESS = "id"
+
+    CODE_ERROR_WRONG_DATA = 404
+    BODY_ERROR_WRONG_DATA = "Учетная запись не найдена"
+
+    CODE_ERROR_EMPTY_FIELD = 400
+    BODY_ERROR_EMPTY_FIELD = "Недостаточно данных для входа"
+
+class OrderResponse():
+
+    CODE_SUCCESS_CREATE = 201
+    BODY_SUCCESS_CREATE = "track"
+
+    CODE_SUCCESS_GET_LIST = 200
+    BODY_SUCCESS_GET_LIST = "orders"
