@@ -39,3 +39,12 @@ class CourierData():
         {"login": PAYLOAD_REGISTR["login"],
          "password": ""}
                         ]
+    
+    TEST_CREATE_COURIER = [
+        {"login": "",
+         "password": PAYLOAD_REGISTR["password"],
+         "firstName": PAYLOAD_REGISTR["firstName"]},
+        {"login": PAYLOAD_REGISTR["login"],
+         "password": "",
+         "firstName": PAYLOAD_REGISTR["firstName"]}
+                        ]

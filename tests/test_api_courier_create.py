@@ -21,9 +21,8 @@ class TestApiCourier():
         
     @allure.title("Проверка создания курьера, без логина или пароля")
     @allure.description("При создании курьера появляется ошибка, если одного из обязательных полей нет")
-    @pytest.mark.parametrize('num', ["login", "password"])
-    def test_courier_create_empty_field_error(self, num):
-        data = CourierData.PAYLOAD_REGISTR
-        data[num] = ""
+    @pytest.mark.parametrize('data', CourierData.TEST_CREATE_COURIER)
+    def test_courier_create_empty_field_error(self, data):
+        data = data
         r = CourierApi.create(data)
         assert r.status_code == correct_r.CODE_ERROR_EMPTY_FIELD and r.json()["message"] == correct_r.BODY_ERROR_EMPTY_FIELD
