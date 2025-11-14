@@ -6,9 +6,9 @@ from api import CourierApi
 @pytest.fixture
 def reg_and_del_courier():
     payload = CourierData.PAYLOAD_REGISTR
-    CourierApi.create(payload)
+    create = CourierApi.create(payload)
     
-    yield payload
+    yield create
 
     response = CourierApi.login(CourierData.PAYLOAD_LOGIN)
     courier_id = response.json().get('id')
