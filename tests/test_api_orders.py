@@ -10,7 +10,7 @@ class TestApiOrders():
     @allure.title("Проверка создания заказа, с разными данными в color")
     @allure.description("Проверка создания заказа при заполнении поля цвет: " \
     "один цвет, два цвета, без цвета")
-    @pytest.mark.parametrize('color', [["BLACK"], ["GREY"], ["BLACK", "GREY"], None])
+    @pytest.mark.parametrize('color', [["BLACK"], ["GREY"], ["BLACK", "GREY"], [""]])
     def test_orders_create_success(self, color):
         data = OrderData.PAYLOAD
         data["color"] = color
